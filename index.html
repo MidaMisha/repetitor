@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Михаил — репетитор по математике и информатике</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f7f8fb;
+            --white: #ffffff;
+            --text: #111827;
+            --muted: #5b6472;
+            --muted-light: #7c8198;
+            --line: rgba(17, 24, 39, 0.08);
+            --blue: #2563eb;
+            --blue-soft: #f4f7ff;
+            --dark: #111827;
+            --radius-xl: 30px;
+            --radius-lg: 24px;
+            --shadow: 0 18px 46px rgba(17, 24, 39, 0.07);
+            --shadow-blue: 0 16px 40px rgba(37, 99, 235, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Montserrat", Arial, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .page {
+            overflow: hidden;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 30px));
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 74px 0;
+        }
+
+        .section-head {
+            max-width: 760px;
+            margin-bottom: 28px;
+        }
+
+        .label {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            min-height: 38px;
+            margin-bottom: 16px;
+            padding: 0 15px;
+            border-radius: 999px;
+            color: var(--blue);
+            background: var(--blue-soft);
+            border: 1px solid rgba(37, 99, 235, 0.16);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+        }
+
+        .title {
+            color: var(--text);
+            font-size: clamp(30px, 4.5vw, 52px);
+            line-height: 1.05;
+            letter-spacing: -0.055em;
+            font-weight: 900;
+        }
+
+        .subtitle {
+            margin-top: 16px;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.7;
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 24px;
+            border-radius: 999px;
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 900;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn--dark {
+            color: #ffffff;
+            background: var(--dark);
+            box-shadow: 0 14px 34px rgba(17, 24, 39, 0.18);
+        }
+
+        .btn--dark:hover {
+            box-shadow: 0 18px 42px rgba(17, 24, 39, 0.24);
+        }
+
+        .btn--blue {
+            color: #ffffff;
+            background: var(--blue);
+            box-shadow: var(--shadow-blue);
+        }
+
+        .btn--blue:hover {
+            box-shadow: 0 18px 42px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn--light {
+            color: var(--text);
+            background: #ffffff;
+            border: 1px solid var(--line);
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        /* Header */
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding: 14px 0;
+            background: rgba(247, 248, 251, 0.86);
+            border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+            backdrop-filter: blur(18px);
+        }
+
+        .header__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-weight: 900;
+        }
+
+        .logo__mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            color: #ffffff;
+            background: var(--dark);
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .logo__text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .logo__text strong {
+            font-size: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .logo__text span {
+            color: var(--muted-light);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav a {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 800;
+            transition: color 0.2s ease;
+        }
+
+        .nav a:hover {
+            color: var(--text);
+        }
+
+        /* Hero */
+
+        .hero {
+            position: relative;
+            padding: 46px 0 36px;
+        }
+
+        .hero__decor {
+            position: absolute;
+            border-radius: 999px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero__decor--one {
+            width: 380px;
+            height: 380px;
+            top: -140px;
+            right: -130px;
+            background: rgba(37, 99, 235, 0.08);
+        }
+
+        .hero__decor--two {
+            width: 280px;
+            height: 280px;
+            left: -120px;
+            bottom: 30px;
+            background: rgba(17, 24, 39, 0.05);
+        }
+
+        .hero__inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 400px;
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .hero__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 560px;
+            padding: 44px;
+            border-radius: var(--radius-xl);
+        }
+
+        .hero__title {
+            max-width: 720px;
+            font-size: clamp(36px, 5.4vw, 68px);
+            line-height: 0.98;
+            letter-spacing: -0.065em;
+            font-weight: 900;
+        }
+
+        .hero__text {
+            max-width: 660px;
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.75;
+            font-weight: 600;
+        }
+
+        .hero__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .hero__note {
+            display: grid;
+            grid-template-columns: 44px minmax(0, 1fr);
+            gap: 12px;
+            max-width: 560px;
+            margin-top: 28px;
+            padding: 16px;
+            border-radius: 20px;
+            background: #f7f8fb;
+            border: 1px solid var(--line);
+        }
+
+        .hero__note-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            color: #ffffff;
+            background: var(--blue);
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        .hero__note p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.55;
+            font-weight: 600;
+        }
+
+        .hero__photo {
+            position: relative;
+            padding: 12px;
+            border-radius: var(--radius-xl);
+        }
+
+        .hero__photo-frame {
+            position: relative;
+            height: 560px;
+            overflow: hidden;
+            border-radius: 24px;
+            background: #e5e7eb;
+        }
+
+        .hero__photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero__photo-info {
+            position: absolute;
+            left: 26px;
+            right: 26px;
+            bottom: 26px;
+            padding: 16px;
+            text-align: left;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid var(--line);
+            box-shadow: 0 14px 32px rgba(17, 24, 39, 0.12);
+            backdrop-filter: blur(14px);
+        }
+
+        .hero__photo-info h3 {
+            color: var(--text);
+            font-size: 23px;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+        }
+
+        .hero__photo-info p {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.45;
+            font-weight: 700;
+        }
+
+        .hero__photo-info span {
+            display: inline-flex;
+            margin-top: 10px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            color: #ffffff;
+            background: var(--dark);
+            font-size: 11px;
+            font-weight: 900;
+        }
+
+        /* Stats */
+
+        .stats {
+            padding: 0 0 36px;
+        }
+
+        .stats__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .stat {
+            padding: 22px;
+            border-radius: var(--radius-lg);
+        }
+
+        .stat--accent {
+            border-color: rgba(37, 99, 235, 0.18);
+            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.08);
+        }
+
+        .stat strong {
+            display: block;
+            color: var(--text);
+            font-size: 28px;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .stat span {
+            display: block;
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.45;
+            font-weight: 700;
+        }
+
+        /* Benefits */
+
+        .benefits__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .benefit {
+            min-height: 270px;
+            padding: 22px;
+            border-radius: var(--radius-lg);
+        }
+
+        .benefit__num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            margin-bottom: 18px;
+            border-radius: 12px;
+            color: #ffffff;
+            background: var(--dark);
+            font-size: 14px;
+            font-weight: 900;
+        }
+
+        .benefit h3 {
+            color: var(--text);
+            font-size: 19px;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+        }
+
+        .benefit p {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.62;
+            font-weight: 600;
+        }
+
+        /* Format */
+
+        .format__grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 350px;
+            gap: 14px;
+        }
+
+        .format__main,
+        .format__result {
+            padding: 30px;
+            border-radius: 28px;
+        }
+
+        .format__main ul {
+            display: grid;
+            gap: 12px;
+            margin-top: 18px;
+            list-style: none;
+        }
+
+        .format__main li {
+            position: relative;
+            padding-left: 24px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .format__main li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--blue);
+        }
+
+        .format__result {
+            color: #ffffff;
+            background: var(--dark);
+            border: 1px solid rgba(17, 24, 39, 0.1);
+            box-shadow: 0 18px 46px rgba(17, 24, 39, 0.16);
+        }
+
+        .format__result h3 {
+            color: #ffffff;
+        }
+
+        .format__result-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .format__result-list span {
+            display: block;
+            padding: 12px 14px;
+            border-radius: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.08);
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        /* Subjects */
+
+        .subjects__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .subject {
+            padding: 26px;
+            border-radius: var(--radius-lg);
+        }
+
+        .subject h3 {
+            color: var(--text);
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: -0.035em;
+        }
+
+        .subject p {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.65;
+            font-weight: 600;
+        }
+
+        .subject__tag {
+            display: inline-flex;
+            margin-top: 18px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            color: var(--blue);
+            background: var(--blue-soft);
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        /* Steps */
+
+        .steps__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .step {
+            padding: 24px;
+            border-radius: var(--radius-lg);
+        }
+
+        .step span {
+            display: inline-flex;
+            margin-bottom: 16px;
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .step h3 {
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: -0.025em;
+        }
+
+        .step p {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        /* Reviews */
+
+        .reviews__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .review {
+            padding: 24px;
+            border-radius: var(--radius-lg);
+        }
+
+        .review__top {
+            margin-bottom: 14px;
+        }
+
+        .review h3 {
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+
+        .review span {
+            display: block;
+            margin-top: 4px;
+            color: var(--muted-light);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .review p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.68;
+            font-weight: 600;
+        }
+
+        /* CTA */
+
+        .cta {
+            padding: 40px 0 84px;
+        }
+
+        .cta__box {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 320px;
+            gap: 24px;
+            align-items: center;
+            padding: 36px;
+            border-radius: var(--radius-xl);
+            border-color: rgba(37, 99, 235, 0.18);
+            box-shadow: 0 20px 60px rgba(17, 24, 39, 0.08);
+        }
+
+        .cta__box h2 {
+            max-width: 760px;
+            font-size: clamp(28px, 4vw, 44px);
+            line-height: 1.08;
+            letter-spacing: -0.05em;
+            font-weight: 900;
+        }
+
+        .cta__box p {
+            max-width: 720px;
+            margin-top: 14px;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.7;
+            font-weight: 600;
+        }
+
+        .cta__actions {
+            display: grid;
+            gap: 10px;
+        }
+
+        .cta__actions .btn {
+            width: 100%;
+        }
+
+        /* Footer */
+
+        .footer {
+            padding: 26px 0;
+            color: var(--muted);
+            background: #ffffff;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .footer p {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .footer__links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer__links a {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        @media (max-width: 1024px) {
+            .nav {
+                display: none;
+            }
+
+            .hero__inner {
+                grid-template-columns: 1fr;
+            }
+
+            .hero__content {
+                min-height: auto;
+            }
+
+            .hero__photo-frame {
+                height: 620px;
+            }
+
+            .stats__grid,
+            .benefits__grid,
+            .steps__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .format__grid,
+            .cta__box {
+                grid-template-columns: 1fr;
+            }
+
+            .subjects__grid,
+            .reviews__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta__actions {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .cta__actions .btn {
+                width: auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                width: min(100% - 24px, 1120px);
+            }
+
+            .section {
+                padding: 54px 0;
+            }
+
+            .header__inner {
+                align-items: flex-start;
+            }
+
+            .header .btn {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 28px;
+            }
+
+            .hero__content {
+                padding: 24px;
+                border-radius: 24px;
+            }
+
+            .hero__title {
+                font-size: 36px;
+            }
+
+            .hero__text {
+                font-size: 15px;
+            }
+
+            .hero__actions {
+                flex-direction: column;
+            }
+
+            .hero__actions .btn {
+                width: 100%;
+            }
+
+            .hero__photo {
+                border-radius: 24px;
+            }
+
+            .hero__photo-frame {
+                height: 440px;
+                border-radius: 18px;
+            }
+
+            .hero__photo-info {
+                left: 22px;
+                right: 22px;
+                bottom: 22px;
+                border-radius: 18px;
+            }
+
+            .stats__grid,
+            .benefits__grid,
+            .steps__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit {
+                min-height: auto;
+            }
+
+            .format__main,
+            .format__result,
+            .subject,
+            .step,
+            .review,
+            .cta__box {
+                padding: 22px;
+                border-radius: 24px;
+            }
+
+            .title {
+                font-size: 30px;
+            }
+
+            .format__main h3,
+            .format__result h3 {
+                font-size: 24px;
+            }
+
+            .cta__actions {
+                display: grid;
+            }
+
+            .cta__actions .btn {
+                width: 100%;
+            }
+
+            .footer__inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="page">
+    <header class="header">
+        <div class="container header__inner">
+            <a href="#" class="logo">
+                <span class="logo__mark">М</span>
+                <span class="logo__text">
+                    <strong>Михаил</strong>
+                    <span>Математика и информатика</span>
+                </span>
+            </a>
+
+            <nav class="nav">
+                <a href="#about">Обо мне</a>
+                <a href="#format">Формат</a>
+                <a href="#subjects">Предметы</a>
+                <a href="#reviews">Отзывы</a>
+                <a href="#contacts">Запись</a>
+            </nav>
+
+            <a href="#contacts" class="btn btn--dark">Пробный урок</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="about">
+            <div class="hero__decor hero__decor--one"></div>
+            <div class="hero__decor hero__decor--two"></div>
+
+            <div class="container hero__inner">
+                <div class="hero__content card">
+                    <div class="label">Репетитор по математике</div>
+
+                    <h1 class="hero__title">
+                        Помогаю спокойно подготовиться к экзаменам на высокий балл
+                    </h1>
+
+                    <p class="hero__text">
+                        Объясняю сложные темы простыми словами, помогаю убрать страх перед задачами
+                        и выстроить понятную подготовку без давления.
+                    </p>
+
+                    <div class="hero__actions">
+                        <a href="#contacts" class="btn btn--blue">Записаться на пробный урок</a>
+                        <a href="#reviews" class="btn btn--light">Смотреть отзывы</a>
+                    </div>
+
+                    <div class="hero__note">
+                        <div class="hero__note-mark">19</div>
+                        <p>
+                            Мне 19 лет, поэтому я легко нахожу контакт со школьниками.
+                            Ученику проще задавать вопросы, не бояться ошибок и спокойно разбираться в теме.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hero__photo card">
+                    <div class="hero__photo-frame">
+                        <img src="image.png" alt="Михаил — репетитор по математике и информатике">
+                    </div>
+
+                    <div class="hero__photo-info">
+                        <h3>Михаил</h3>
+                        <p>Репетитор, наставник и разработчик</p>
+                        <span>2+ года опыта</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats__grid">
+                    <div class="stat card">
+                        <strong>2+</strong>
+                        <span>года опыта в репетиторстве</span>
+                    </div>
+
+                    <div class="stat stat--accent card">
+                        <strong>32/32</strong>
+                        <span>ОГЭ по математике</span>
+                    </div>
+
+                    <div class="stat card">
+                        <strong>4 курс</strong>
+                        <span>специальность «Веб-разработка»</span>
+                    </div>
+
+                    <div class="stat card">
+                        <strong>19 лет</strong>
+                        <span>легко нахожу контакт с подростками</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section benefits">
+            <div class="container">
+                <div class="section-head">
+                    <div class="label">Почему со мной удобно</div>
+
+                    <h2 class="title">
+                        Не просто подготовка к экзамену, а понятная система занятий
+                    </h2>
+
+                    <p class="subtitle">
+                        Главная задача — не заставить ученика заучивать, а помочь ему понять предмет,
+                        почувствовать уверенность и спокойно идти к результату.
+                    </p>
+                </div>
+
+                <div class="benefits__grid">
+                    <article class="benefit card">
+                        <span class="benefit__num">01</span>
+                        <h3>Сильная база</h3>
+                        <p>
+                            Я сдал ОГЭ по математике на максимум — 32/32.
+                            С начальных классов участвовал в олимпиадах и занимал призовые места.
+                        </p>
+                    </article>
+
+                    <article class="benefit card">
+                        <span class="benefit__num">02</span>
+                        <h3>Объясняю простыми словами</h3>
+                        <p>
+                            Сам проходил через репетиторов, курсы и самостоятельную подготовку,
+                            поэтому знаю, какие методы действительно работают.
+                        </p>
+                    </article>
+
+                    <article class="benefit card">
+                        <span class="benefit__num">03</span>
+                        <h3>Логика, а не зубрёжка</h3>
+                        <p>
+                            Как будущий веб-разработчик, помогаю видеть логику задач,
+                            понимать алгоритмы и раскладывать сложные темы на простые шаги.
+                        </p>
+                    </article>
+
+                    <article class="benefit card">
+                        <span class="benefit__num">04</span>
+                        <h3>Спокойное общение</h3>
+                        <p>
+                            Без давления, раздражения и страха ошибиться. Ученик может спокойно
+                            задавать вопросы и постепенно закрывать пробелы.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section format" id="format">
+            <div class="container">
+                <div class="format__grid">
+                    <div class="format__main card">
+                        <div class="label">Формат работы</div>
+
+                        <h2 class="title">
+                            Онлайн, наглядно и без воды
+                        </h2>
+
+                        <ul>
+                            <li>Занятия проходят в Zoom с виртуальной доской и графическим планшетом.</li>
+                            <li>Короткая теория сразу закрепляется практикой, чтобы ученик понимал тему.</li>
+                            <li>Разбираем личные лайфхаки подготовки к экзаменам и контрольным.</li>
+                            <li>После занятия понятно, что уже получается и над чем нужно поработать.</li>
+                        </ul>
+                    </div>
+
+                    <div class="format__result">
+                        <h3>Что получает ученик</h3>
+
+                        <div class="format__result-list">
+                            <span>Рост баллов</span>
+                            <span>Уверенность в знаниях</span>
+                            <span>Интерес к предмету</span>
+                            <span>Спокойная подготовка</span>
+                            <span>Поддержка наставника</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section subjects" id="subjects">
+            <div class="container">
+                <div class="section-head">
+                    <div class="label">Направления</div>
+
+                    <h2 class="title">
+                        Помогаю закрыть пробелы и подготовиться к проверочным работам
+                    </h2>
+                </div>
+
+                <div class="subjects__grid">
+                    <article class="subject card">
+                        <h3>Математика</h3>
+                        <p>
+                            Разбор школьных тем, домашних заданий, контрольных и сложных задач.
+                            Упор на понимание, а не механическое запоминание.
+                        </p>
+                        <span class="subject__tag">5–9 класс</span>
+                    </article>
+
+                    <article class="subject card">
+                        <h3>ОГЭ и ВПР</h3>
+                        <p>
+                            Подготовка по понятному плану: диагностика, закрытие слабых мест,
+                            отработка заданий и уверенность перед экзаменом.
+                        </p>
+                        <span class="subject__tag">Экзамены и проверочные</span>
+                    </article>
+
+                    <article class="subject card">
+                        <h3>Информатика</h3>
+                        <p>
+                            Объяснение логики, алгоритмов и базовых тем простым языком.
+                            Особенно полезно тем, кому сложно понять программирование.
+                        </p>
+                        <span class="subject__tag">Логика и алгоритмы</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section steps">
+            <div class="container">
+                <div class="section-head">
+                    <div class="label">Как начать</div>
+
+                    <h2 class="title">
+                        Сначала диагностика, потом понятный план
+                    </h2>
+                </div>
+
+                <div class="steps__grid">
+                    <article class="step card">
+                        <span>Шаг 1</span>
+                        <h3>Пробный урок</h3>
+                        <p>
+                            Знакомимся, смотрим уровень ученика и понимаем, какие темы вызывают сложности.
+                        </p>
+                    </article>
+
+                    <article class="step card">
+                        <span>Шаг 2</span>
+                        <h3>План занятий</h3>
+                        <p>
+                            Составляем маршрут подготовки: что нужно подтянуть и в каком порядке двигаться.
+                        </p>
+                    </article>
+
+                    <article class="step card">
+                        <span>Шаг 3</span>
+                        <h3>Практика</h3>
+                        <p>
+                            Разбираем темы, закрепляем заданиями и постепенно убираем пробелы.
+                        </p>
+                    </article>
+
+                    <article class="step card">
+                        <span>Шаг 4</span>
+                        <h3>Результат</h3>
+                        <p>
+                            Ученик начинает увереннее решать задачи и спокойнее относиться к проверкам.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reviews" id="reviews">
+            <div class="container">
+                <div class="section-head">
+                    <div class="label">Отзывы родителей</div>
+
+                    <h2 class="title">
+                        Ученикам комфортно, родителям спокойно
+                    </h2>
+                </div>
+
+                <div class="reviews__grid">
+                    <article class="review card">
+                        <div class="review__top">
+                            <h3>Светлана</h3>
+                            <span>Математика</span>
+                        </div>
+
+                        <p>
+                            Специалист очень понравился сыну. Очень комфортно и интересно заниматься.
+                            Есть у Михаила энергия и лёгкость в общении, которая воодушевляет сына
+                            и способствует появлению интереса к предмету. Нет давления на ученика,
+                            дружеское общение. Материал преподаётся легко и интересно.
+                        </p>
+                    </article>
+
+                    <article class="review card">
+                        <div class="review__top">
+                            <h3>Рахиля</h3>
+                            <span>Математика</span>
+                        </div>
+
+                        <p>
+                            У Михаила очень ответственный и глубокий подход с подробной обратной связью.
+                            Сыну интересно, а главное — он понятно разбирается в школьном материале.
+                        </p>
+                    </article>
+
+                    <article class="review card">
+                        <div class="review__top">
+                            <h3>Лена</h3>
+                            <span>Математика</span>
+                        </div>
+
+                        <p>
+                            Михаил очень быстро нашёл подход к моему сыну, с первого занятия заинтересовал его.
+                            Сыну не нравится математика, и база хромает, но с Михаилом он занимается
+                            с удовольствием. Особенно рекомендую, если ученик — подросток.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>
